@@ -1,0 +1,24 @@
+{
+  "type": "record",
+  "name": "OrderRowPayload",
+  "namespace": "com.ee.ordermanager.model.payload",
+  "doc": "Payload for an order row",
+  "fields": [
+    {
+      "name": "orderRowId",
+      "type": "int"
+    },
+    {
+      "name": "itemId",
+      "type": "int"
+    },
+    {
+      "name": "quantity",
+      "type": "int"
+    },
+    {
+      "name": "unitaryPrice",
+      "type": "double"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "type": "record",
+  "name": "CreateEEOrderPayload",
+  "namespace": "com.ee.ordermanager.model.payload",
+  "doc": "Payload for an order that EE has to create",
+  "fields": [
+    {
+      "name": "orderId",
+      "type": "int"
+    },
+    {
+      "name": "customerId",
+      "type": "int"
+    },
+    {
+      "name": "customerName",
+      "type": "string"
+    },
+    {
+      "name": "creationDateTime",
+      "type": [
+        "null",
+        {
+          "type": "long",
+          "logicalType": "timestamp-millis"
+        }
+      ]
+    },
+    {
+      "name":"orderRows",
+      "type":{
+        "type": "array",
+        "items":{
+          "name": "orderRow",
+          "type": "com.ee.ordermanager.model.payload.OrderRowPayload"
+        }
+      }
+    }
+  ]
+}

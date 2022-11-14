@@ -1,9 +1,8 @@
 package com.ee.ordermanager.mapper;
 
 import com.ee.ordermanager.model.CreateAcmeOrder;
-import com.ee.ordermanager.model.CreateAcmeOrderPayload;
+import com.ee.ordermanager.model.payload.CreateAcmeOrderPayload;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
@@ -13,8 +12,9 @@ import java.time.ZoneOffset;
 
 @Mapper(
         nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS,
-        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-public interface ArchiveMapper {
+        nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
+        componentModel = "spring")
+public interface OrderMapper {
 
     /**
      * Converts the createAcmeOrder into the avro payload
@@ -22,7 +22,7 @@ public interface ArchiveMapper {
      * @param order   The create-acme-order
      * @return The CreateAcmeOrderPayload
      */
-    CreateAcmeOrderPayload modelToUpsertPayload(CreateAcmeOrder order);
+    CreateAcmeOrderPayload modelToPayload(CreateAcmeOrder order);
 
 //    /**
 //     * Converts the mail server response to the archive object
@@ -42,4 +42,9 @@ public interface ArchiveMapper {
 //    default Instant localDateTimeToInstant(LocalDateTime localDateTime) {
 //        return localDateTime.toInstant(ZoneOffset.UTC);
 //    }
+
+    default Instant localDateTimeToLong(LocalDateTime localDateTime) {
+        return localDateTime.toInstant(ZoneOffset.UTC);
+    }
+
 }

@@ -7,5 +7,4 @@ import org.springframework.kafka.annotation.EnableKafkaStreams;
 @Configuration
 @EnableKafka
 @EnableKafkaStreams
-public class KafkaConfiguration {
-}
+public class KafkaConfiguration { }

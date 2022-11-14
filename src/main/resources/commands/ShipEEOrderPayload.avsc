@@ -1,15 +1,15 @@
 {
   "type": "record",
-  "name": "CreateAcmeOrderPayload",
+  "name": "ShipEEOrderPayload",
   "namespace": "com.ee.ordermanager.model.payload",
-  "doc": "Payload for an order that ACME has to create",
+  "doc": "Payload for an order that EE has to ship",
   "fields": [
     {
       "name": "orderId",
       "type": "int"
     },
     {
-      "name": "creationDateTime",
+      "name": "shippingDate",
       "type": [
         "null",
         {
@@ -19,12 +19,20 @@
       ]
     },
     {
-      "name": "numberOfItems",
+      "name": "deliveryCompanyId",
       "type": "int"
     },
     {
-      "name": "totalPrice",
+      "name": "deliveryCompanyName",
+      "type": "string"
+    },
+    {
+      "name": "shippingCost",
       "type": "double"
+    },
+    {
+      "name": "warehousePosition",
+      "type": "int"
     }
   ]
 }

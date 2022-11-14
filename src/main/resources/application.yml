@@ -11,6 +11,9 @@ spring:
         default.key.serde: org.springframework.kafka.support.serializer.JsonSerde
         default.value.serde: org.springframework.kafka.support.serializer.JsonSerde
         default.deserialization.exception.handler: org.apache.kafka.streams.errors.LogAndContinueExceptionHandler
+    producer:
+      key-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
     properties:
       schema.registry.url: http://localhost:8085
       value.subject.name.strategy: io.confluent.kafka.serializers.subject.TopicRecordNameStrategy
