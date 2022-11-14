@@ -1,7 +1,10 @@
 package com.ee.ordermanager.controller;
 
 import com.ee.ordermanager.model.CreateAcmeOrder;
-import com.ee.ordermanager.service.processor.OrderService;
+import com.ee.ordermanager.model.CreateEEOrder;
+import com.ee.ordermanager.model.ShipAcmeOrder;
+import com.ee.ordermanager.model.ShipEEOrder;
+import com.ee.ordermanager.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,9 +21,27 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    @PostMapping("/create")
+    @PostMapping("/create/ee")
+    public ResponseEntity<Void> createOrder(@RequestBody @Valid CreateEEOrder createEEOrder){
+        orderService.createEEOrder(createEEOrder);
+        return ResponseEntity.accepted().build();
+    }
+
+    @PostMapping("/create/acme")
     public ResponseEntity<Void> createOrder(@RequestBody @Valid CreateAcmeOrder createAcmeOrder){
         orderService.createAcmeOrder(createAcmeOrder);
+        return ResponseEntity.accepted().build();
+    }
+
+    @PostMapping("/ship/ee")
+    public ResponseEntity<Void> shipOrder(@RequestBody @Valid ShipEEOrder shipEEOrder){
+        orderService.shipEEOrder(shipEEOrder);
+        return ResponseEntity.accepted().build();
+    }
+
+    @PostMapping("/ship/acme")
+    public ResponseEntity<Void> shipOrder(@RequestBody @Valid ShipAcmeOrder shipAcmeOrder){
+        orderService.shipAcmeOrder(shipAcmeOrder);
         return ResponseEntity.accepted().build();
     }
 

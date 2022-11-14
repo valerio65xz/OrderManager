@@ -3,7 +3,7 @@ package com.ee.ordermanager.stream;
 import com.ee.ordermanager.configuration.KafkaTopics;
 import com.ee.ordermanager.model.Event;
 import com.ee.ordermanager.model.KafkaKey;
-import com.ee.ordermanager.service.processor.MessageProcessor;
+import com.ee.ordermanager.stream.processor.MessageProcessor;
 import io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

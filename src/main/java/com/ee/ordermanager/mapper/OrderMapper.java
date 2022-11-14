@@ -1,7 +1,13 @@
 package com.ee.ordermanager.mapper;
 
 import com.ee.ordermanager.model.CreateAcmeOrder;
+import com.ee.ordermanager.model.CreateEEOrder;
+import com.ee.ordermanager.model.ShipAcmeOrder;
+import com.ee.ordermanager.model.ShipEEOrder;
 import com.ee.ordermanager.model.payload.CreateAcmeOrderPayload;
+import com.ee.ordermanager.model.payload.CreateEEOrderPayload;
+import com.ee.ordermanager.model.payload.ShipAcmeOrderPayload;
+import com.ee.ordermanager.model.payload.ShipEEOrderPayload;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;
@@ -24,24 +30,29 @@ public interface OrderMapper {
      */
     CreateAcmeOrderPayload modelToPayload(CreateAcmeOrder order);
 
-//    /**
-//     * Converts the mail server response to the archive object
-//     *
-//     * @param mailServerApiAggregateGetMailboxesResponse mail server response
-//     * @return the archive
-//     */
-//    @Mapping(target = "configuration", source = ".")
-//    Archive webMailApiAggregateGetMailboxesResponseToArchive(MailServerApiAggregateGetMailboxesResponse mailServerApiAggregateGetMailboxesResponse);
-//
-//    @Mapping(target = "size", source = "quota.computed.size")
-//    @Mapping(target = "currentSpaceOccupation", source = "quota.occupation.size")
-//    @Mapping(target = "validFrom", source = "lifecycle.validFrom")
-//    @Mapping(target = "validTo", source = "lifecycle.validTo")
-//    ArchiveConfiguration webMailApiAggregateGetResponseConfigurationToArchiveConfiguration(MailServerApiAggregateGetMailboxesResponse mailServerApiAggregateGetMailboxesResponse);
-//
-//    default Instant localDateTimeToInstant(LocalDateTime localDateTime) {
-//        return localDateTime.toInstant(ZoneOffset.UTC);
-//    }
+    /**
+     * Converts the createEEOrder into the avro payload
+     *
+     * @param order   The create-ee-order
+     * @return The CreateEEOrderPayload
+     */
+    CreateEEOrderPayload modelToPayload(CreateEEOrder order);
+
+    /**
+     * Converts the shipEEOrder into the avro payload
+     *
+     * @param order   The ship-ee-order
+     * @return The ShipEeOrderPayload
+     */
+    ShipEEOrderPayload modelToPayload(ShipEEOrder order);
+
+    /**
+     * Converts the shipAcmeOrder into the avro payload
+     *
+     * @param order   The ship-acme-order
+     * @return The ShipAcmeOrderPayload
+     */
+    ShipAcmeOrderPayload modelToPayload(ShipAcmeOrder order);
 
     default Instant localDateTimeToLong(LocalDateTime localDateTime) {
         return localDateTime.toInstant(ZoneOffset.UTC);

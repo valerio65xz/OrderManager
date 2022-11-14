@@ -1,4 +1,4 @@
-package com.ee.ordermanager.service.processor;
+package com.ee.ordermanager.stream.processor;
 
 import com.ee.ordermanager.model.Event;
 import com.ee.ordermanager.model.KafkaKey;
