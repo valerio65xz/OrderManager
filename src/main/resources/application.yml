@@ -1,0 +1,19 @@
+server:
+  port: 9001
+  forward-headers-strategy: native
+
+spring:
+  kafka:
+    bootstrap-servers: kafka:9092
+    streams:
+      application-id: order-manager
+      properties:
+        default.key.serde: org.springframework.kafka.support.serializer.JsonSerde
+        default.value.serde: org.springframework.kafka.support.serializer.JsonSerde
+        default.deserialization.exception.handler: org.apache.kafka.streams.errors.LogAndContinueExceptionHandler
+    properties:
+      schema.registry.url: http://localhost:8085
+      value.subject.name.strategy: io.confluent.kafka.serializers.subject.TopicRecordNameStrategy
+    topics:
+      orders: orders
+      events: events
