@@ -1,4 +1,4 @@
-package com.ee.ordermanager.model;
+package com.ee.ordermanager.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,15 +12,20 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateAcmeOrder {
+public class ShipEEOrder {
 
     @NotNull
     private Integer orderId;
     @NotNull
-    private LocalDateTime creationDateTime;
+    private LocalDateTime shippingDate;
     @NotNull
-    private Integer numberOfItems;
+    private Integer deliveryCompanyId;
     @NotNull
-    private Double totalPrice;
+    private String deliveryCompanyName;
+    @NotNull
+    private Double shippingCost;
+    @NotNull
+    private Integer warehousePosition;
+
 
 }

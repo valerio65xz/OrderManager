@@ -1,9 +1,9 @@
 package com.ee.ordermanager.mapper;
 
-import com.ee.ordermanager.model.CreateAcmeOrder;
-import com.ee.ordermanager.model.CreateEEOrder;
-import com.ee.ordermanager.model.ShipAcmeOrder;
-import com.ee.ordermanager.model.ShipEEOrder;
+import com.ee.ordermanager.model.dto.CreateAcmeOrder;
+import com.ee.ordermanager.model.dto.CreateEEOrder;
+import com.ee.ordermanager.model.dto.ShipAcmeOrder;
+import com.ee.ordermanager.model.dto.ShipEEOrder;
 import com.ee.ordermanager.model.payload.CreateAcmeOrderPayload;
 import com.ee.ordermanager.model.payload.CreateEEOrderPayload;
 import com.ee.ordermanager.model.payload.ShipAcmeOrderPayload;

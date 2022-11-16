@@ -29,11 +29,12 @@ public class MessageProcessor {
      * @return key value of the new message
      */
     public KeyValue<KafkaKey, Event> process(KafkaKey kafkaKey, SpecificRecord payload) {
-        Event notificationPayload = Event.builder()
+        Event eventPayload = Event.builder()
                 .data(payloadToMap(payload))
                 .build();
 
-        return new KeyValue<>(kafkaKey, notificationPayload);
+        log.info("Processed order with key {} and value {}", kafkaKey, eventPayload);
+        return new KeyValue<>(kafkaKey, eventPayload);
     }
 
     /**
@@ -45,8 +46,8 @@ public class MessageProcessor {
     private Map<String, Object> payloadToMap(SpecificRecord payload) {
         try {
             return jsonMapper.readValue(payload.toString(), new TypeReference<>() {});
-
         } catch (Exception exception) {
+            log.error(exception.getMessage(), exception);
             throw new JsonParseException(exception);
         }
     }

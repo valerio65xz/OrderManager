@@ -1,4 +1,4 @@
-package com.ee.ordermanager.model;
+package com.ee.ordermanager.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,23 +7,21 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateEEOrder {
+public class ShipAcmeOrder {
 
     @NotNull
     private Integer orderId;
     @NotNull
-    private Integer customerId;
+    private LocalDateTime shippingDate;
     @NotNull
-    private String customerName;
+    private String deliveryCompanyName;
     @NotNull
-    private LocalDateTime creationDateTime;
-    @NotNull
-    private List<OrderRow> orderRows;
+    private Double shippingCost;
+
 
 }
