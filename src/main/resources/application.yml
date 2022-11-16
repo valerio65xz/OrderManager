@@ -8,8 +8,6 @@ spring:
     streams:
       application-id: order-manager
       properties:
-        default.key.serde: org.springframework.kafka.support.serializer.JsonSerde
-        default.value.serde: org.springframework.kafka.support.serializer.JsonSerde
         default.deserialization.exception.handler: org.apache.kafka.streams.errors.LogAndContinueExceptionHandler
     producer:
       key-serializer: org.springframework.kafka.support.serializer.JsonSerializer
