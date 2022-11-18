@@ -1,7 +1,12 @@
-package com.ee.ordermanager.configuration.producer;
+package com.ee.ordermanager.configuration;
 
+import com.ee.ordermanager.model.KafkaKey;
 import lombok.RequiredArgsConstructor;
+import org.apache.avro.specific.SpecificRecord;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
@@ -11,26 +16,27 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * Since we need multiple kafka producer, with this class we can create any number of producers
- * providing the correct configuration in the application.yml
+ * Describes the Kafka Producer's configuration reading from the application.yml
  */
+@Configuration
 @RequiredArgsConstructor
-public abstract class KafkaProducerConfiguration<K, V> extends KafkaProperties.Producer {
+@ConfigurationProperties(prefix = "spring.kafka.producer")
+public class KafkaProducerConfiguration extends KafkaProperties.Producer {
 
     protected final KafkaProperties kafkaProperties;
 
     /**
-     * Here we are building the kafka producer factory for the single consumer.
+     * It builds the kafka producer factory for the single consumer.
      * <p>
      * The kafkaProperties.buildProducerProperties() will return a map with the default producer configurations
      * The this.buildProperties() will return a map with the configuration of the specific producer from application.yml
      * <p>
-     * We are merging these 2 maps to override the default properties
-     * with the ones taken from the application.yml
+     * And it merges the 2 maps to override the default properties with the ones taken from the application.yml
      *
      * @return The kafka producer factory
      */
-    protected ProducerFactory<K, V> kafkaProducerFactory() {
+    @Bean
+    public ProducerFactory<KafkaKey, SpecificRecord> orderKafkaProducerFactory() {
         return new DefaultKafkaProducerFactory<>(
                 Stream.concat(
                         kafkaProperties.buildProducerProperties().entrySet().stream(),
@@ -43,8 +49,10 @@ public abstract class KafkaProducerConfiguration<K, V> extends KafkaProperties.P
         );
     }
 
-    protected KafkaTemplate<K, V> kafkaTemplate(ProducerFactory<K, V> kafkaProducerFactory) {
-        return new KafkaTemplate<>(kafkaProducerFactory);
+    @Bean
+    public KafkaTemplate<KafkaKey, SpecificRecord> orderKafkaTemplate(
+            ProducerFactory<KafkaKey, SpecificRecord> orderKafkaProducerFactory) {
+        return new KafkaTemplate<>(orderKafkaProducerFactory);
     }
 
 }

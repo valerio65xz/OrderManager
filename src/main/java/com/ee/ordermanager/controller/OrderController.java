@@ -7,41 +7,31 @@ import com.ee.ordermanager.model.dto.ShipEEOrder;
 import com.ee.ordermanager.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
-
 @RestController
-@RequestMapping("/order")
 @RequiredArgsConstructor
-public class OrderController {
+public class OrderController implements OrderApi{
 
     private final OrderService orderService;
 
-    @PostMapping("/create/ee")
-    public ResponseEntity<Void> createOrder(@RequestBody @Valid CreateEEOrder createEEOrder){
-        orderService.createEEOrder(createEEOrder);
+    public ResponseEntity<Void> createEEOrder(CreateEEOrder order){
+        orderService.createEEOrder(order);
         return ResponseEntity.accepted().build();
     }
 
-    @PostMapping("/create/acme")
-    public ResponseEntity<Void> createOrder(@RequestBody @Valid CreateAcmeOrder createAcmeOrder){
-        orderService.createAcmeOrder(createAcmeOrder);
+    public ResponseEntity<Void> createAcmeOrder(CreateAcmeOrder order){
+        orderService.createAcmeOrder(order);
         return ResponseEntity.accepted().build();
     }
 
-    @PostMapping("/ship/ee")
-    public ResponseEntity<Void> shipOrder(@RequestBody @Valid ShipEEOrder shipEEOrder){
-        orderService.shipEEOrder(shipEEOrder);
+    public ResponseEntity<Void> shipEEOrder(ShipEEOrder order){
+        orderService.shipEEOrder(order);
         return ResponseEntity.accepted().build();
     }
 
-    @PostMapping("/ship/acme")
-    public ResponseEntity<Void> shipOrder(@RequestBody @Valid ShipAcmeOrder shipAcmeOrder){
-        orderService.shipAcmeOrder(shipAcmeOrder);
+    public ResponseEntity<Void> shipAcmeOrder(ShipAcmeOrder order){
+        orderService.shipAcmeOrder(order);
         return ResponseEntity.accepted().build();
     }
 
