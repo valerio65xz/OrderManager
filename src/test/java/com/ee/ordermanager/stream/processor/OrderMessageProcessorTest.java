@@ -18,20 +18,20 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
-public class MessageProcessorTest {
+public class OrderMessageProcessorTest {
 
     private static final String EXPECTED_PAYLOAD_KEY = "eventPayload";
     private static final Integer ORDER_ID = 1;
     private static final EventName EVENT_NAME = EventName.CREATED;
     private static final Company COMPANY = Company.EE;
 
-    private MessageProcessor messageProcessor;
+    private OrderMessageProcessor orderMessageProcessor;
 
 
     @BeforeEach
     public void setUp() {
         ObjectMapper jsonMapper = Jackson2ObjectMapperBuilder.json().build();
-        this.messageProcessor = new MessageProcessor(jsonMapper);
+        this.orderMessageProcessor = new OrderMessageProcessor(jsonMapper);
     }
 
     @Test
@@ -54,7 +54,7 @@ public class MessageProcessorTest {
                 .data(Map.of(EXPECTED_PAYLOAD_KEY, consumedPayload))
                 .build();
 
-        KeyValue<KafkaKey, Event> actual = messageProcessor.process(consumedKafkaKey, consumedPayload);
+        KeyValue<KafkaKey, Event> actual = orderMessageProcessor.process(consumedKafkaKey, consumedPayload);
 
         assertEquals(expectedKafkaKey, actual.key);
 

@@ -14,9 +14,9 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Slf4j
-@RequiredArgsConstructor
 @Component
-public class MessageProcessor {
+@RequiredArgsConstructor
+public class OrderMessageProcessor {
 
     private final ObjectMapper jsonMapper;
 

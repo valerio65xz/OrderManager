@@ -1,11 +1,12 @@
 package com.ee.ordermanager.model.dto;
 
-import com.ee.ordermanager.model.OrderRow;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -24,7 +25,7 @@ public class CreateEEOrder {
     private String customerName;
     @NotNull
     private LocalDateTime creationDateTime;
-    @NotNull
-    private List<OrderRow> orderRows;
+    @NotEmpty
+    private List<@Valid OrderRow> orderRows;
 
 }

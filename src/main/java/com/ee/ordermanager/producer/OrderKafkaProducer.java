@@ -12,6 +12,10 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 
+/**
+ * Implementation of the Kafka Producer. This producer will send all the creation or shipping of the orders
+ * made by EverythingEverywhere and Acme.
+ */
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -19,6 +23,9 @@ public class OrderKafkaProducer {
 
     protected final KafkaTemplate<KafkaKey, SpecificRecord> kafkaTemplate;
 
+    /**
+     * Send the payload mapped in an Avro model with the specified key
+     */
     public void sendMessage(KafkaKey kafkaKey, SpecificRecord payload, String topic) {
         Message<SpecificRecord> message = MessageBuilder.withPayload(payload)
                 .setHeader(KafkaHeaders.MESSAGE_KEY, kafkaKey)
