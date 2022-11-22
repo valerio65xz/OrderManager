@@ -19,6 +19,13 @@ You can clone the project from this link:
 git clone https://github.com/valerio65xz/OrderManager.git
 ```
 
+If you’re a Windows user, maybe you have to redirect the Docker URL into the localhost. So please open in admin mode 
+the file *“C:/Windows/system32/drivers/etc/hosts”* and put this string at the end of the file:
+
+```sh
+127.0.0.1 kubernetes.docker.internal
+```
+
 # Usage ℹ️
 
 If you want to just execute the project without an IDE, open a terminal in your installation folder and type first:
