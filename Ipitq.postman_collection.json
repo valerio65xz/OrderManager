@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "7148736f-ec3e-4dd3-8fa2-a00d7a753265",
+		"name": "Ipitq",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3460591"
+	},
+	"item": [
+		{
+			"name": "CreateEE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderId\": 1,\r\n    \"customerId\": 1,\r\n    \"customerName\": \"name\",\r\n    \"creationDateTime\": \"2022-12-24T15:30:00\",\r\n    \"orderRows\": [\r\n        {\r\n            \"orderRowId\": 1,\r\n            \"itemId\": 1,\r\n            \"quantity\": 5,\r\n            \"unitaryPrice\": 1.11\r\n        },\r\n        {\r\n            \"orderRowId\": 2,\r\n            \"itemId\": 1,\r\n            \"quantity\": 5,\r\n            \"unitaryPrice\": 1.11\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/order/create/ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"order",
+						"create",
+						"ee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateAcme",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderId\": 1,\r\n    \"creationDateTime\": \"2022-12-24T15:30:00\",\r\n    \"numberOfItems\": 3,\r\n    \"totalPrice\": 15.50\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/order/create/acme",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"order",
+						"create",
+						"acme"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ShipEE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderId\": 1,\r\n    \"deliveryCompanyId\": 1,\r\n    \"deliveryCompanyName\": \"name\",\r\n    \"shippingDate\": \"2022-12-24T15:30:00\",\r\n    \"warehousePosition\": 5,\r\n    \"shippingCost\": 1.11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/order/ship/ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"order",
+						"ship",
+						"ee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ShipAcme",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderId\": 1,\r\n    \"deliveryCompanyName\": \"name\",\r\n    \"shippingDate\": \"2022-12-24T15:30:00\",\r\n    \"shippingCost\": 1.11\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9001/order/ship/acme",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9001",
+					"path": [
+						"order",
+						"ship",
+						"acme"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
