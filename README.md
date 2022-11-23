@@ -60,4 +60,4 @@ Finally, to check the Kafka Topics and events, you can access the AKHQ console a
 
 # Docs 📚
 
-You can find the detailed documentation in `Documentation.pdf` and the OpenAPI 3.0 Docs at `http://localhost:9001/swagger-ui/index.html`.
+You can find the detailed documentation in `Docs.pdf` and the OpenAPI 3.0 Docs at `http://localhost:9001/swagger-ui/index.html`.
